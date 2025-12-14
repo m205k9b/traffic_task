@@ -5,6 +5,7 @@ import load_data as ld
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 from matplotlib.patches import FancyArrowPatch
+from visualization import NetworkVisualizer
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -162,5 +163,19 @@ def AON_get_network():
     for edge, time in link_times.items():
         if edge_flows[edge] > 0:
             print(f"{edge[0]}→{edge[1]}: {time:.2f} 分钟")
+
+    # 可视化展示
+    AONVisualizer = NetworkVisualizer(assigner.graph, assigner.nodes)
+
+    AONVisualizer.visualize_edge_flows(
+        edge_flows, 
+        save_path="images/AON_edge_flows.png",
+        title= "全有全无分配结果" )
+        
+    AONVisualizer.visualize_link_performance(
+        link_times,
+        save_path="images/AON_link_times.png",
+        title= "全有全无情况下的链路通行时间")
+
     
     return assigner, edge_flows, link_times

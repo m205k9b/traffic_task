@@ -247,15 +247,3 @@ class NetworkVisualizer:
             plt.savefig(save_path, dpi=300, bbox_inches='tight')
         plt.show()
 
-# 便捷函数：直接从AONAssignment对象创建可视化器
-def create_visualizer_from_aon(aon_assignment):
-    """
-    从AONAssignment对象创建可视化器
-    
-    Parameters:
-    aon_assignment: AONAssignment实例
-    
-    Returns:
-    NetworkVisualizer实例
-    """
-    return NetworkVisualizer(aon_assignment.graph, aon_assignment.nodes)
