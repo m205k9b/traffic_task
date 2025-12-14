@@ -31,7 +31,7 @@ class IAAssignment:
             )
 
             self.graph.add_edge(
-                u, v, 
+                v, u, 
                 free_flow_time=free_flow_time,  # 自由流时间
                 capacity=capacity,              # 容量
                 flow=0,                         # 当前流量
