@@ -21,7 +21,7 @@ def get_demand() -> Dict[Tuple[str, str], float]:
     demands = {(begin, end): amount for begin, end, amount in zip(begins, ends, amounts)}
     return demands
 
-def parse_network() -> Tuple[List[str], List[Tuple[str, str, float, float]]]:
+def parse_network() -> Tuple[Dict, List[Tuple[str, str, float, float]]]:
     """
     Docstring for parse_network
     
@@ -36,11 +36,9 @@ def parse_network() -> Tuple[List[str], List[Tuple[str, str, float, float]]]:
 
     nodes: Dict[str, List] = network_data['nodes']
     nodes_dict: Dict = {node_name: [node_x, node_y] for node_name, node_x, node_y in zip(nodes['name'], nodes['x'], nodes['y'])}
-    print(nodes_dict)
 
     edges_dict: Dict[str, List] = network_data['links'] # 遍历边
     edges_list: List[List] = [edges_dict['between'], edges_dict['speedmax'], edges_dict['capacity']]
-    print(edges_list)
 
     ret_edges = [] # 返回的边数据
     for i in range(len(edges_list[0])):
@@ -59,4 +57,4 @@ def parse_network() -> Tuple[List[str], List[Tuple[str, str, float, float]]]:
 
         ret_edges.append((edge_begin, edge_end, edge_free_flow_time, capacity))
 
-    return list(nodes_dict.keys()), ret_edges
+    return nodes_dict, ret_edges
