@@ -253,7 +253,7 @@ def example_ia_network():
     # 3. 执行增量分配（分为10份）
     final_flows, increment_records = ia_assigner.assign_demand(
         demand_matrix, 
-        num_increments=10,
+        num_increments=1000,
         bpr_params=(0.15, 4)
     )
     
