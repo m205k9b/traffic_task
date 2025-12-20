@@ -3,8 +3,6 @@ import json
 import numpy as np
 from math import sqrt
 
-network_path = 'json/network.json'
-demand_path = 'json/demand.json'
 
 # 获取图的数据
 def load_data(file_path: str) -> Dict:
@@ -13,7 +11,7 @@ def load_data(file_path: str) -> Dict:
     return data
 
 # 获取需求数据
-def get_demand() -> Dict[Tuple[str, str], float]:
+def get_demand(demand_path) -> Dict[Tuple[str, str], float]:
     demand_data: Dict[str, List] = load_data(demand_path)
     begins = demand_data['from']
     ends = demand_data['to']
@@ -22,7 +20,7 @@ def get_demand() -> Dict[Tuple[str, str], float]:
     demands = {(begin, end): amount for begin, end, amount in zip(begins, ends, amounts)}
     return demands
 
-def parse_network() -> Tuple[Dict, List[Dict[str, any]]]:
+def parse_network(network_path) -> Tuple[Dict, List[Dict[str, any]]]:
     """
     Docstring for parse_network
     

@@ -23,8 +23,6 @@ def Incremental_Traffic_Assignment(nodes, edges, od_demand,
             'node_names': node_names
         }
     """
-    
-    print(f"\n=== Incremental Assignment (K={K}) ===")
 
     step_demand = {od: amt / K for od, amt in od_demand.items()}
 
@@ -87,8 +85,8 @@ if __name__ == '__main__':
     demand_file='data/demand.json'
     
     ## 获取边和节点数据
-    nodes, edges = parse_network()
-    demands = get_demand()
+    nodes, edges = parse_network(network_file)
+    demands = get_demand(demand_file)
 
     dict1 = Incremental_Traffic_Assignment(nodes, edges, demands, K=1000)
     

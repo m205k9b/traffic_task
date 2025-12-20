@@ -78,8 +78,6 @@ def All_or_Nothing_Traffic_Assignment(nodes, edges, od_demand):
         link_travel_times[edge_begin][edge_end] = get_link_travel_time(flow_aon, edge, edge_begin, edge_end)
         link_travel_times[edge_end][edge_begin] = get_link_travel_time(flow_aon, edge, edge_end, edge_begin)
 
-    print(link_travel_times)
-
     return {
         'nodes': nodes,
         'edges': edges,
@@ -89,12 +87,12 @@ def All_or_Nothing_Traffic_Assignment(nodes, edges, od_demand):
     }
 
 if __name__ == '__main__':
-    network_file='data/network.json'
-    demand_file='data/demand.json'
+    network_file='json/network.json'
+    demand_file='json/demand.json'
     
     ## 获取边和节点数据
-    nodes, edges = parse_network()
-    demands = get_demand()
+    nodes, edges = parse_network(network_file)
+    demands = get_demand(demand_file)
 
     dict1 = All_or_Nothing_Traffic_Assignment(nodes, edges, demands)
 
